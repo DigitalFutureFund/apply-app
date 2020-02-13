@@ -1,4 +1,4 @@
-# ResetNetwork / Hypha
+# Hypha
 
 [![<HyphaApp>](https://circleci.com/gh/HyphaApp/hypha.svg?style=shield)](https://circleci.com/gh/HyphaApp/hypha)
 ![GitHub top language](https://img.shields.io/github/languages/top/HyphaApp/hypha)
