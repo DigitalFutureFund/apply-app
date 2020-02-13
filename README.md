@@ -1,4 +1,4 @@
-# Hypha
+# ResetNetwork / Hypha
 
 <a href="https://travis-ci.org/opentechfund/opentech.fund">
  <img src="https://travis-ci.org/opentechfund/opentech.fund.svg?branch=master" alt="Build Status" />

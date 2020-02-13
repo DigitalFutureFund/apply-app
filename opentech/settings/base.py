@@ -11,6 +11,7 @@ env = os.environ.copy()
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+APP = 'resetnetwork'
 APP_NAME = env.get('APP_NAME', 'opentech')
 
 DEBUG = False
@@ -79,6 +80,19 @@ INSTALLED_APPS = [
     'opentech.apply.stream_forms',
     'opentech.apply.utils',
     'opentech.apply.projects.apps.ProjectsConfig',
+
+    # reset network specific pages
+    'opentech.reset_network.reset_network_about',
+    'opentech.reset_network.reset_network_basic_page',
+    'opentech.reset_network.reset_network_contact_us',
+    'opentech.reset_network.reset_network_cookie_accept',
+    'opentech.reset_network.reset_network_home',
+    'opentech.reset_network.reset_network_menus',
+    'opentech.reset_network.reset_network_open_calls',
+    'opentech.reset_network.reset_network_people',
+    'opentech.reset_network.reset_network_person',
+    'opentech.reset_network.reset_network_resources',
+    'opentech.reset_network.reset_network_work',
 
     'opentech.public.funds',
     'opentech.public.home',
@@ -165,6 +179,8 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
     'opentech.apply.middleware.apply_url_conf_middleware',
+
+    'opentech.reset_network.middleware.redirect_apply_homepage_middleware',
 ]
 
 ROOT_URLCONF = 'opentech.urls'
@@ -175,6 +191,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(PROJECT_DIR, 'templates'),
             os.path.join(PROJECT_DIR, 'apply', 'templates'),
+            os.path.join(PROJECT_DIR, 'reset_network', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
