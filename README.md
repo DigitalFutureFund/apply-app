@@ -1,4 +1,4 @@
-# Hypha
+# ResetNetwork / Hypha
 
 [![<OpenTechFund>](https://circleci.com/gh/OpenTechFund/hypha.svg?style=shield)](https://circleci.com/gh/OpenTechFund/hypha)
 ![GitHub top language](https://img.shields.io/github/languages/top/OpenTechFund/hypha)
