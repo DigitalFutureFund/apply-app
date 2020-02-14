@@ -3,23 +3,16 @@ from django.urls import include, path
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.conf.urls import url
+
 from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.images.views.serve import ServeView
 
+from opentech.public import urls as public_urls
 from opentech.apply.users.urls import public_urlpatterns as user_urls
 from opentech.apply.users.views import LoginView
-
-
-from opentech.public import urls as public_urls
-
-# if settings.APP == 'resetnetwork':
-#     public_urls = []
-# else:
-#     from opentech.public import urls as public_urls
-
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -41,9 +34,6 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('select2/', include('django_select2.urls')),
 ]
-
-if settings.APP == 'resetnetwork':
-    pass
 
 
 if settings.DEBUG:
@@ -74,12 +64,12 @@ urlpatterns += [
     path('', include(wagtail_urls)),
 ]
 
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
 
-    urlpatterns = [path('__debug__/', include(debug_toolbar.urls)), ] + urlpatterns
 
 base_urlpatterns = [*urlpatterns]
