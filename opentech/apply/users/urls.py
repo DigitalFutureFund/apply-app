@@ -12,7 +12,7 @@ public_urlpatterns = [
     path(
         'login/',
         LoginView.as_view(
-            template_name='users/login.html',
+            template_name='users/reset_network_login.html',
             redirect_authenticated_user=True
         ),
         name='login'
@@ -31,7 +31,7 @@ urlpatterns = [
             path(
                 'change/',
                 auth_views.PasswordChangeView.as_view(
-                    template_name="users/change_password.html",
+                    template_name="users/reset_network_change_password.html",
                     success_url=reverse_lazy('users:account')
                 ),
                 name='password_change',
@@ -39,7 +39,7 @@ urlpatterns = [
             path(
                 'reset/',
                 auth_views.PasswordResetView.as_view(
-                    template_name='users/password_reset/form.html',
+                    template_name='users/password_reset/reset_network_form.html',
                     email_template_name='users/password_reset/email.txt',
                     success_url=reverse_lazy('users:password_reset_done')
                 ),
@@ -47,13 +47,13 @@ urlpatterns = [
             ),
             path(
                 'reset/done/',
-                auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset/done.html'),
+                auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset/reset_network_done.html'),
                 name='password_reset_done'
             ),
             path(
                 'reset/confirm/<uidb64>/<token>/',
                 auth_views.PasswordResetConfirmView.as_view(
-                    template_name='users/password_reset/confirm.html',
+                    template_name='users/password_reset/reset_network_confirm.html',
                     post_reset_login=True,
                     post_reset_login_backend='django.contrib.auth.backends.ModelBackend',
                     success_url=reverse_lazy('users:account')
@@ -62,7 +62,7 @@ urlpatterns = [
             ),
             path(
                 'reset/complete/',
-                auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset/complete.html'),
+                auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset/reset_network_complete.html'),
                 name='password_reset_complete'
             ),
         ])),
