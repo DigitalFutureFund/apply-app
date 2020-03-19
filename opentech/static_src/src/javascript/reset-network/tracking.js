@@ -84,6 +84,13 @@
             if (window.location.protocol === 'https:') {
                 cookie += ';secure';
             }
+            // try and set the cookie at the top level domain
+            // will only work with a 1 part tld
+            var domainParts = window.location.hostname.split('.').reverse();
+            if (domainParts.length >= 2) {
+                var domain = domainParts[1] + '.' + domainParts[0];
+                cookie += ';domain=' + domain;
+            }
             document.cookie = cookie;
         },
 
