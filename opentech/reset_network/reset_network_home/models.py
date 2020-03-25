@@ -1,6 +1,5 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
-from opentech.reset_network.reset_network_open_calls.models import ResetNetworkOpenCallPage
 from opentech.reset_network.reset_network_utils.models import ResetNetworkBasePage
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 from wagtail.core.models import Orderable, Page
@@ -132,11 +131,3 @@ class ResetNetworkHomePage(ResetNetworkBasePage):
             InlinePanel('reset_network_home_page_featured', label='Featured Card', heading='Featured'),
         ], heading='Content - Section 3 (Resources)'),
     ]
-
-    def get_context(self, request, *args, **kwargs):
-
-        open_calls = ResetNetworkOpenCallPage.objects.live().public()
-
-        context = super().get_context(request, *args, **kwargs)
-        context['open_calls'] = open_calls
-        return context
