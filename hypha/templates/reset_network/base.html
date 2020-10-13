@@ -1,4 +1,4 @@
-{% load static cache wagtailuserbar wagtailcore_tags wagtailimages_tags menu_tags cookie_accept_tags %}
+{% load static cache wagtailuserbar wagtailcore_tags wagtailimages_tags menu_tags cookieconsent_tags %}
 <!doctype html>
 {% wagtail_site as current_site %}
 <html class="no-js" lang="en">
@@ -45,6 +45,17 @@
     {% block extra_css %}{% endblock %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    {% if COOKIES_ACCEPTED and MATOMO_URL and MATOMO_SITEID %}
+    {# we are only expecting strings, so make sure we escape the values #}
+    <script>
+      var matomo = {
+        'url': '{{ MATOMO_URL }}',
+        'siteid': '{{ MATOMO_SITEID }}'
+      };
+    </script>
+    <script src="{% static 'js/reset-network/tracking.js' %}"></script>
+    <script defer src="https://{{ MATOMO_URL }}/matomo.js"></script>
+    {% endif %}
   </head>
   <body class="{% block body_class %}base-grey{% endblock %}">
 
@@ -108,30 +119,21 @@
 
   {% include 'reset_network/includes/foot.html' %}
 
-  {% resetnetworkcookieaccept %}
-
   {% include "reset_network/includes/svgs.html" %}
 
-  {% block extra_js %}{% endblock %}
+  {% cookie_banner %}
 
-  {% if MATOMO_URL and MATOMO_SITEID %}
-  {# we are only expecting strings, so make sure we escape the values #}
-  <script>
-    var matomo = {
-      'url': '{{ MATOMO_URL }}',
-      'siteid': '{{ MATOMO_SITEID }}'
-    };
-  </script>
-  {% endif %}
+  <script src="{% static 'js/js.cookie.min.js' %}"></script>
+  <script src="{% static 'js/cookieconsent.js' %}"></script>
   <script src="{% static 'js/reset-network/slick.min.js' %}"></script>
   <script src="{% static 'js/reset-network/apply-form.js' %}"></script>
   <script src="{% static 'js/reset-network/focus.js' %}"></script>
   <script src="{% static 'js/reset-network/animations.js' %}"></script>
   <script src="{% static 'js/reset-network/people.js' %}"></script>
-  <script src="{% static 'js/reset-network/tracking.js' %}"></script>
   <script src="{% static 'js/reset-network/carousel.js' %}"></script>
   <script src="{% static 'js/reset-network/menu.js' %}"></script>
   <script src="{% static 'js/reset-network/scroll.js' %}"></script>
+  {% block extra_js %}{% endblock %}
 
   </body>
 </html>

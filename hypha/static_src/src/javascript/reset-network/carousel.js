@@ -65,11 +65,9 @@
                 var firstImgSrc = $firstCarouselItem.children('.hero-carousel__image').attr('src');
                 var positionTimeout = null;
                 var dfdMinTimeout = $.Deferred();
-                var dfdCookieNotice = $.Deferred();
                 var promises = [
                     CAROUSEL.HERO.utils.preloadImgs(CAROUSEL.HERO.$imgs),
-                    dfdMinTimeout.promise(),
-                    dfdCookieNotice.promise()
+                    dfdMinTimeout.promise()
                 ];
 
                 // Fade up the first image ASAP
@@ -88,9 +86,6 @@
                         CAROUSEL.HERO.positionCarousel();
                     }, 500);
                 });
-
-                // Wait for cookie notice dismissal before permitting animations
-                CAROUSEL.$document.bind('cookie-notice-hidden', dfdCookieNotice.resolve);
 
                 // Commence hero animations
                 setTimeout(dfdMinTimeout.resolve, 500);

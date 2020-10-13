@@ -102,7 +102,6 @@ INSTALLED_APPS = [
     'hypha.reset_network.reset_network_about',
     'hypha.reset_network.reset_network_basic_page',
     'hypha.reset_network.reset_network_contact_us',
-    'hypha.reset_network.reset_network_cookie_accept',
     'hypha.reset_network.reset_network_home',
     'hypha.reset_network.reset_network_menus',
     'hypha.reset_network.reset_network_open_calls',

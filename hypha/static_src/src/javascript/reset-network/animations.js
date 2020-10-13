@@ -314,10 +314,10 @@
                             setTimeout(ANIMATIONS.GIFS.onScroll, 750);
                         });
                     }
-                // Not home page reveal GIFs on cookie notice dismissal
+                // Not home page reveal GIFs directly
                 }
                 else {
-                    ANIMATIONS.$doc.bind('cookie-notice-hidden', ANIMATIONS.GIFS.onScroll);
+                    ANIMATIONS.GIFS.onScroll();
                 }
             },
 

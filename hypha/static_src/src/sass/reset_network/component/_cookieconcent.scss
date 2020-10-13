@@ -1,0 +1,55 @@
+.cookieconsent {
+    position: fixed;
+    bottom:  0;
+    padding: #{$gutter}px;
+    color: color(seed-white);
+    background-color: color(seed-black);
+    border-top:  4px solid color(seed-white);
+    transform: translateY(100vh);
+    transition: all $animation-speed-fast ease-out;
+    z-index: $z-index-notification;
+
+    &__title {
+        @include font-size-xl();
+        @include gutter-bottom-sm();
+        font-family: $font-family-secondary;
+        color: color(seed-white);
+    }
+
+    .cookieconsent__message {
+        @include gutter-top-sm();
+        @include gutter-bottom-sm();
+
+        a {
+            &:link,
+            &:visited,
+            &:focus,
+            &:hover {
+                color: color(seed-white);
+            }
+        }
+    }
+
+    .button--cookieconsent {
+        display: inline-block;
+        padding: 25px 30px;
+        box-shadow: inset 0 0 0 2px color(seed-white);
+        text-align: center;
+        line-height: 1;
+
+        &:focus,
+        &:hover {
+            background-color: color(seed-white);
+            color: color(seed-black);
+        }
+
+        &:active {
+            background-color: color(seed-yellow, 50);
+            color: color(seed-black);
+        }
+    }
+}
+
+.js-cookieconsent-open {
+    transform: translateY(0);
+}
