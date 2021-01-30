@@ -62,7 +62,9 @@ class ResetNetworkOpenCallsPage(ResetNetworkBasePage):
 
     def serve(self, request):
 
-        from hypha.reset_network.reset_network_open_calls.forms import ResetNetworkOpenCallsForm
+        from hypha.reset_network.reset_network_open_calls.forms import (
+            ResetNetworkOpenCallsForm,
+        )
 
         context = self.get_context(request)
 
