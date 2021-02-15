@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, PageChooserPanel
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -22,6 +23,7 @@ class ResetNetworkAboutPage(ResetNetworkBasePage):
     content_heading_gif_mobile = models.ForeignKey('wagtaildocs.Document', verbose_name='Heading image mobile', null=True, blank=True,
                                                    related_name='+', on_delete=models.SET_NULL)
     content_text = models.TextField(blank=True, verbose_name='Text')
+    content_long_text = RichTextField(verbose_name='Text', blank=True)
 
     # Section 1 elements
     section_1_heading = models.CharField(verbose_name='Heading', max_length=255, blank=True)
@@ -68,6 +70,7 @@ class ResetNetworkAboutPage(ResetNetworkBasePage):
             DocumentChooserPanel('content_heading_gif_desktop'),
             DocumentChooserPanel('content_heading_gif_mobile'),
             FieldPanel('content_text'),
+            FieldPanel('content_long_text'),
         ], heading='Content'),
         MultiFieldPanel([
             FieldPanel('section_1_heading'),

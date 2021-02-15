@@ -22,6 +22,11 @@ base-darkest
       <div class="para__body">
         {{ page.content_text }}
       </div>
+      {% if page.content_long_text %}
+      <div class="para__body-long rte">
+        {{ page.content_long_text|richtext }}
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -79,5 +84,29 @@ base-darkest
 {% endfor %}
 
 {% endif %}
+
+{% if page.content_bottom_heading or page.content_bottom_text or page.content_bottom_link and page.content_bottom_link_text %}
+<section class="para theme-dark" data-section-theme="dark">
+  <div class="para__wrap contain reveal">
+    <div class="para__content">
+      <div class="para__title">
+        <h2>{{ page.content_bottom_heading }}</h2>
+      </div>
+      <div class="para__body rte">
+      {{ page.content_bottom_text|linebreaks }}
+      </div>
+      <div class="para__action">
+        {% if page.content_bottom_link and page.content_bottom_link_text %}
+          <a href="{% pageurl page.content_bottom_link %}" class="button" data-button="">
+            <span class="button__drop"></span>
+            <span class="button__label">{{ page.content_bottom_link_text }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 
 {% endblock %}

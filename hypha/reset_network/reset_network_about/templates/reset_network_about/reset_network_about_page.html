@@ -32,6 +32,11 @@
       <div class="para__body">
         {{ page.content_text|linebreaks  }}
       </div>
+      {% if page.content_long_text %}
+      <div class="para__body-long rte">
+        {{ page.content_long_text|richtext }}
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
