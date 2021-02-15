@@ -1,7 +1,7 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.core import blocks
-from wagtail.core.fields import StreamField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.snippets.blocks import SnippetChooserBlock
 
@@ -18,6 +18,7 @@ class ResetNetworkPeoplePage(ResetNetworkBasePage):
 
     content_heading = models.CharField(verbose_name='Heading', max_length=255, blank=False)
     content_text = models.TextField(verbose_name='Text', blank=True)
+    content_long_text = RichTextField(verbose_name='Text', blank=True)
 
     section_1 = StreamField(
         [
@@ -37,6 +38,7 @@ class ResetNetworkPeoplePage(ResetNetworkBasePage):
         MultiFieldPanel([
             FieldPanel('content_heading'),
             FieldPanel('content_text'),
+            FieldPanel('content_long_text'),
         ], heading='Content'),
         StreamFieldPanel('section_1'),
     ]

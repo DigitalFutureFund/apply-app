@@ -48,6 +48,7 @@ class ResetNetworkWorkPage(ResetNetworkBasePage):
 
     content_heading = models.CharField(verbose_name='Heading', max_length=255, blank=False)
     content_text = models.TextField(verbose_name='Text', blank=True)
+    content_long_text = RichTextField(verbose_name='Text', blank=True)
 
     region_heading = models.CharField(verbose_name='Heading', max_length=255, null=True, blank=True)
 
@@ -55,6 +56,7 @@ class ResetNetworkWorkPage(ResetNetworkBasePage):
         MultiFieldPanel([
             FieldPanel('content_heading'),
             FieldPanel('content_text'),
+            FieldPanel('content_long_text'),
         ], heading='Content'),
         MultiFieldPanel([
             InlinePanel('reset_network_work_pillar', label='Pillar', heading='Pillar')
