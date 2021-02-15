@@ -22,6 +22,11 @@ base-darkest
       <div class="para__body">
         {{ page.content_text }}
       </div>
+      {% if page.content_long_text %}
+      <div class="para__body-long rte">
+        {{ page.content_long_text|richtext }}
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
