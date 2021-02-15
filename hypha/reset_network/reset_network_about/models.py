@@ -39,7 +39,7 @@ class ResetNetworkAboutPage(ResetNetworkBasePage):
 
     # Section 3 elements
     section_3_heading = models.CharField(verbose_name='Heading', max_length=255, blank=True)
-    section_3_text = models.TextField(verbose_name='Text', blank=True)
+    section_3_text = RichTextField(verbose_name='Text', blank=True)
     section_3_image = models.ForeignKey('images.CustomImage', verbose_name='Image', null=True, blank=True,
                                         related_name='+', on_delete=models.SET_NULL)
 

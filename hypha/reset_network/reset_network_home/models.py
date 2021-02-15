@@ -7,6 +7,7 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel,
     PageChooserPanel,
 )
+from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -83,7 +84,7 @@ class ResetNetworkHomePage(ResetNetworkBasePage):
 
     # Section 1 elements
     section_1_heading = models.CharField(verbose_name='Heading', max_length=255, blank=True)
-    section_1_text = models.TextField(verbose_name='Text', blank=True)
+    section_1_text = RichTextField(verbose_name='Text', blank=True)
     section_1_link = models.ForeignKey('wagtailcore.Page', verbose_name='Link', null=True, blank=True, related_name='+',
                                        on_delete=models.PROTECT)
     section_1_link_text = models.CharField(verbose_name='Link text', max_length=255, blank=True)
