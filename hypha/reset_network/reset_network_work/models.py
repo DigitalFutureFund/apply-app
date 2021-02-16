@@ -59,6 +59,8 @@ class ResetNetworkWorkPage(ResetNetworkBasePage):
 
     content_bottom_heading = models.CharField(verbose_name='Heading', max_length=255, blank=True)
     content_bottom_text = models.TextField(verbose_name='Text', blank=True)
+    content_bottom_image = models.ForeignKey('images.CustomImage', verbose_name='Image', null=True, blank=True,
+                                             related_name='+', on_delete=models.SET_NULL)
     content_bottom_link = models.ForeignKey('wagtailcore.Page', verbose_name='Link', null=True, blank=True, related_name='+',
                                             on_delete=models.PROTECT)
     content_bottom_link_text = models.CharField(verbose_name='Link text', max_length=255, blank=True)
@@ -79,6 +81,7 @@ class ResetNetworkWorkPage(ResetNetworkBasePage):
         MultiFieldPanel([
             FieldPanel('content_bottom_heading'),
             FieldPanel('content_bottom_text'),
+            ImageChooserPanel('content_bottom_image'),
             PageChooserPanel('content_bottom_link'),
             FieldPanel('content_bottom_link_text')
         ], heading='Content bottom'),

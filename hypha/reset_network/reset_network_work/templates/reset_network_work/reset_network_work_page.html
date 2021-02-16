@@ -85,9 +85,16 @@ base-darkest
 
 {% endif %}
 
-{% if page.content_bottom_heading or page.content_bottom_text or page.content_bottom_link and page.content_bottom_link_text %}
-<section class="para theme-dark" data-section-theme="dark">
+{% if page.content_bottom_image or page.content_bottom_heading or page.content_bottom_text or page.content_bottom_link and page.content_bottom_link_text %}
+<section class="para para--content-right para--aside-lg para--col-sm theme-dark" data-section-theme="dark">
   <div class="para__wrap contain reveal">
+    <div class="para__aside">
+      <div class="surface surface--1-1">
+        <div class="surface__plane">
+          {% image page.content_bottom_image fill-590x590-c100 class="surface__image" %}
+        </div>
+      </div>
+    </div>
     <div class="para__content">
       <div class="para__title">
         <h2>{{ page.content_bottom_heading }}</h2>
